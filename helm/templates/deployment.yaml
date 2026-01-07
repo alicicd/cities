@@ -27,6 +27,7 @@ kind: Deployment
 metadata:
   name: elasticsearch
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: elasticsearch
@@ -41,5 +42,14 @@ spec:
           env:
             - name: discovery.type
               value: single-node
+            {{- if .Values.elasticsearch.esJavaOpts }}
+            - name: ES_JAVA_OPTS
+              value: {{ .Values.elasticsearch.esJavaOpts | quote }}
+            {{- end }}
           ports:
             - containerPort: 9200
+          {{- with .Values.elasticsearch.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
