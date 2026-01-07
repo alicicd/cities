@@ -2,22 +2,20 @@
 
 ## Deployment
 1. **Local (Docker Compose):** `docker-compose up --build`
-2. **Kubernetes (Helm):** `helm install city-service ./deploy/helm`
+2. **Kubernetes (Helm):** `helm install city-service ./helm`
 
 ## API Endpoints
 - `GET /health`
 - `POST /city?name=London&population=9000000`
 - `GET /city/london`
 
-#EXAMPLE
+## EXAMPLE
 
-# Add a city
+### Add a city
 curl -X POST "http://localhost:8000/city?name=Almaty&population=2000000"
 
 # List all cities (formatted with jq)
 curl -s "http://localhost:8000/cities" | jq
-
-
 
 
 ## Reflection
