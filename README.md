@@ -36,22 +36,31 @@ Populate the database with sample data via API:
 
 ### 🌐 Access the API
 
-```
+```text
 http://localhost:8000/cities
-
-
 ```
+
+---
+
 ## 🧪 Example Commands to Manage the Service
 
-### sample Commands
+### View all data
 
 ```bash
 curl -s http://localhost:8000/cities | jq
+```
 
+### Add a new record
+
+```bash
 curl -s -X POST "http://localhost:8000/city?name=Almaty&population=2000000"
+```
 
+### Show a single record
+
+```bash
 curl -s http://localhost:8000/city/london | jq
-
+```
 
 ---
 
@@ -101,7 +110,7 @@ kubectl port-forward svc/city-app 8000:8000
 
 The API will be available at:
 
-```
+```text
 http://localhost:8000
 ```
 
