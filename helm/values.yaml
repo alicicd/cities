@@ -1,5 +1,6 @@
 image: city-service
 tag: latest
+
 elasticsearch:
   resources:
     requests:
@@ -8,3 +9,4 @@ elasticsearch:
     limits:
       memory: "2Gi"
       cpu: "1000m"
+  esJavaOpts: "-Xms1g -Xmx1g"
