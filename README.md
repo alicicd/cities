@@ -38,7 +38,20 @@ Populate the database with sample data via API:
 
 ```
 http://localhost:8000/cities
+
+
 ```
+## 🧪 Example Commands to Manage the Service
+
+### sample Commands
+
+```bash
+curl -s http://localhost:8000/cities | jq
+
+curl -s -X POST "http://localhost:8000/city?name=Almaty&population=2000000"
+
+curl -s http://localhost:8000/city/london | jq
+
 
 ---
 
