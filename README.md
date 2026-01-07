@@ -1,65 +1,121 @@
-# City Population Service
+# 🌍 City Population Service
+
+A REST API service for managing city population data.  
+Supports running via **Docker Compose** and **Kubernetes (Minikube + Helm)**.
+
+---
 
 ## 📌 Prerequisites
-### Ensure you have the following installed:
 
-- Docker & Docker Compose
-- Minikube (for Kubernetes deployment)
-- Helm (for managing K8s charts)
-- jq (optional, for the seed.sh script)
+Make sure you have the following installed:
 
+- 🐳 **Docker** & **Docker Compose**
+- ☸️ **Minikube** (for local Kubernetes)
+- 🎛 **Helm** (Kubernetes package manager)
+- 🔧 **jq** *(optional, required for `seed.sh`)*
+
+---
 
 ## 🐳 Docker Compose (Fast Track)
-For local development and rapid API testing.
 
-Build and Start:
+Best option for local development and quick API testing.
 
+### ▶️ Build & Start
+
+```bash
 docker compose up -d --build
+```
 
-Manual Data Seeding: Populate the database via the API using our helper script:
+### 🌱 Manual Data Seeding (Optional)
+
+Populate the database with sample data via API:
+
+```bash
 ./seed.sh
+```
 
-Access: The API will be available at http://localhost:8000/cities
+### 🌐 Access the API
 
-## API Endpoints
-- `GET /health`
-- `POST /city?name=London&population=9000000`
-- `GET /city/london`
+```
+http://localhost:8000/cities
+```
 
+---
 
+## 🔌 API Endpoints
 
+| Method | Endpoint | Description |
+|------|---------|-------------|
+| GET  | `/health` | Health check |
+| POST | `/city?name=London&population=9000000` | Add a new city |
+| GET  | `/city/london` | Get city by name |
+| GET  | `/cities` | Get all cities |
+| GET  | `/docs` | Swagger UI |
+
+---
 
 ## ☸️ Minikube Deployment (Local Kubernetes)
 
-1. Initialize the Cluster: 
+### 1️⃣ Start Minikube
+
+```bash
 minikube start --driver=docker --memory=4096 --cpus=2
+```
 
-2. Configure Local Registry Environment
+### 2️⃣ Use Minikube Docker Environment
+
+```bash
 eval $(minikube docker-env)
+```
 
-3. Build the Image Internally
+### 3️⃣ Build the Image Inside Minikube
+
+```bash
 docker build -t city-service:latest .
+```
 
-4. Deploy via Helm
+### 4️⃣ Deploy Using Helm
+
+```bash
 helm install city-app ./helm
+```
 
-5. Access the Service
+### 5️⃣ Access the Service
+
+```bash
 kubectl port-forward svc/city-app 8000:8000
+```
 
+The API will be available at:
 
+```
+http://localhost:8000
+```
 
-📊 API Reference
-GET /cities — Retrieve all cities from the database.
+---
 
-POST /city?name=X&population=Y — Add a new city record.
+## 📊 API Reference
 
-GET /docs — Interactive Swagger UI documentation.
+- **GET `/cities`** — Retrieve all cities from the database  
+- **POST `/city?name=X&population=Y`** — Add a new city  
+- **GET `/docs`** — Interactive Swagger documentation  
 
+---
 
+## 🧠 Reflection
 
+- **Challenges:**  
+  Database startup delay was handled using container health checks.
 
-## Reflection
-- **Challenges:** Handling database startup lag (solved with healthchecks).
-- **Production Scaling:** High Availability ES cluster, Ingress with TLS, Prometheus monitoring.
+- **Production Scaling Ideas:**
+  - High Availability database cluster
+  - Ingress Controller with TLS
+  - Prometheus & Grafana monitoring
+  - Horizontal Pod Autoscaler (HPA)
 
+---
+
+## 📄 License
+
+This project is intended for educational and demonstration purposes.
 
