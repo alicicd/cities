@@ -1,12 +1,12 @@
 # City Population Service
 
 ## 📌 Prerequisites
-Ensure you have the following installed:
+### Ensure you have the following installed:
 
-Docker & Docker Compose
-Minikube (for Kubernetes deployment)
-Helm (for managing K8s charts)
-jq (optional, for the seed.sh script)
+- Docker & Docker Compose
+- Minikube (for Kubernetes deployment)
+- Helm (for managing K8s charts)
+- jq (optional, for the seed.sh script)
 
 
 ## 🐳 Docker Compose (Fast Track)
