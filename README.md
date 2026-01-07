@@ -12,7 +12,7 @@ Make sure you have the following installed:
 - 🐳 **Docker** & **Docker Compose**
 - ☸️ **Minikube** (for local Kubernetes)
 - 🎛 **Helm** (Kubernetes package manager)
-- 🔧 **jq** *(optional, required for `seed.sh`)*
+- 🔧 **jq** *(optional, required for `cities-load.sh`)*
 
 ---
 
@@ -31,7 +31,7 @@ docker compose up -d --build
 Populate the database with sample data via API:
 
 ```bash
-./seed.sh
+./cities-load.sh
 ```
 
 ### 🌐 Access the API
